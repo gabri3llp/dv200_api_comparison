@@ -1,3 +1,13 @@
 .MyNavBar {
   background-color: rgb(139, 8, 172) !important ;
 }
+
+.hero-section{
+  color: aliceblue;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
