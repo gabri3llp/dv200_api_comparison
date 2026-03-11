@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 function MyCards() {
   return (
+  <section className='HpCards'>
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>Game</Card.Title>
@@ -15,6 +16,7 @@ function MyCards() {
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
+  </section>
   );
 }
 

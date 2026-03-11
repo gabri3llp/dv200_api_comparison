@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function Comparison() {
   return (
     <div>
@@ -7,3 +10,4 @@ function Comparison() {
 }
 
 export default Comparison;
+
