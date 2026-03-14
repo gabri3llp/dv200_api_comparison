@@ -1,5 +1,10 @@
 .MyNavBar {
   background-color: #2A475E !important ;
+  
+}
+
+.nav-link:hover {
+  color: #F0B53B !important;
 }
 
 .hero-section{
@@ -48,4 +53,37 @@ margin-top: 20%;
 
 .HpCards{
   padding-bottom: 5%;
+}
+
+.footer {
+  background-color: #1B2C44;
+  padding: 10px 20px;
+  margin-top: 50px;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #F0B53B;
+}
+
+.GameComps {
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 12%;
+  padding: 40px;
+}
+
+.PieSec{
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 12%;
+  padding: 40px;
+}
+
+.OtherSec{
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 12%;
+  padding: 40px;
 }

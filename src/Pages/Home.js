@@ -1,48 +1,45 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyCards from '../Components/HpCards';
-import Hero from '../Components/Hero';
+import HomeHero from '../Components/HpHero';
 import Mydata from '../Components/HpData';
 
 function Home() {
   return (
     <div>
 
-      <Hero></Hero>
+      <HomeHero></HomeHero>
 
-      <div className='row HpCardSectionC'>
+      <div className='HpCardSectionC'>
 
-        <h1 style={{ color: '#1B2C44', backgroundColor: '#F0B53B', borderRadius: "12px" }}> Top of their Games </h1>
-      
-    <div className='row HpCardSectionP'>
+        <div className='row'>
+          <div className='col'>
+            <h1 style={{ color: '#1B2C44', backgroundColor: '#F0B53B', width: "fit-content", borderRadius: "20px",padding: "8px 75px"}}>
 
-    
+              Top of their Games
+            </h1>
+          </div>
+        </div>
 
-      <div className='col'>
-      <MyCards/>
+        <div className='row HpCardSectionP'>
+          <div className='col'>
+            <MyCards/>
+          </div>
+          <div className='col'>
+            <MyCards/>
+          </div>
+          <div className='col'>
+            <MyCards/>
+          </div>
+          <div className='col'>
+            <MyCards/>
+          </div>
+        </div>
+
       </div>
 
-      <div className='col'>
-      <MyCards/>
-      </div>
-
-       <div className='col'>
-      <MyCards/>
-      </div>
-
-      <div className='col'>
-      <MyCards/>
-      </div>
-
-    </div>
-
-    </div>
-
-
-    <section className='DataSection'>
-
-      <Mydata></Mydata>
-
-    </section>
+      <section className='DataSection'>
+        <Mydata></Mydata>
+      </section>
 
     </div>
   );

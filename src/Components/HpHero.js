@@ -1,7 +1,7 @@
 import '../App.css';
 import Image from 'react-bootstrap/Image';
 
-function Hero() {
+function HomeHero() {
   return (
     <div className="hero-section">
       <Image src="holder.js/100px250" alt='COOL ASS IMAGE' fluid />
@@ -11,4 +11,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default HomeHero;

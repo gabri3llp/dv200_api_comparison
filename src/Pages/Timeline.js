@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TimeHero from '../Components/TlHeror';
 
 function Timeline() {
   return (
     <div>
-      <h1>Timeline Page</h1>
+      <TimeHero></TimeHero>
     </div>
   );
 }
