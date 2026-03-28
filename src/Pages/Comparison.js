@@ -1,9 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import CompHero from '../Components/CpHero';
-import GameCard from '../Components/CpCards';
-import ChooseGame from '../Components/CpGameSel';
+import CpCards from '../Components/CpCards';
+import CpGameSel from '../Components/CpGameSel';
 
 function Comparison(){
+
+  // State for both games - just like rocket1 and rocket2 in class!
+  const [game1, setGame1] = useState(null);
+  const [game2, setGame2] = useState(null);
+
   return(
     <div>
 
@@ -29,21 +35,15 @@ function Comparison(){
             </div>
           </div>
 
-          
-          <div className='row align-items-start '>
+          <div className='row align-items-start'>
 
-            
+            {/* Game 1 */}
             <div className='col-5' style={{ borderRadius: '10px', padding: '20px' }}>
-              <ChooseGame></ChooseGame>
-              <GameCard></GameCard>
-              <div className='row mt-3'>
-                <div className='col-4'><p style={{color:'white'}}>Title</p><p style={{color:'white'}}>Num_reviews</p><p style={{color:'white'}}>Review_score</p></div>
-                <div className='col-4'><p style={{color:'white'}}>Release</p><p style={{color:'white'}}>Total_positive</p><p style={{color:'white'}}>Total_negative</p></div>
-                <div className='col-4'><p style={{color:'white'}}>Price</p></div>
-              </div>
+              <CpGameSel onSelectGame={setGame1} />
+              <CpCards game={game1} />
             </div>
 
-            
+            {/* VS */}
             <div className='col-2 text-center' style={{ paddingTop: '100px' }}>
               <h1 style={{ color: 'white', fontSize: '3rem' }}>VS</h1>
               <button style={{ 
@@ -58,15 +58,10 @@ function Comparison(){
               </button>
             </div>
 
-            
+            {/* Game 2 */}
             <div className='col-5' style={{ borderRadius: '10px', padding: '20px' }}>
-              <ChooseGame></ChooseGame>
-              <GameCard></GameCard>
-              <div className='row mt-3'>
-                <div className='col-4'><p style={{color:'white'}}>Title</p><p style={{color:'white'}}>Num_reviews</p><p style={{color:'white'}}>Review_score</p></div>
-                <div className='col-4'><p style={{color:'white'}}>Release</p><p style={{color:'white'}}>Total_positive</p><p style={{color:'white'}}>Total_negative</p></div>
-                <div className='col-4'><p style={{color:'white'}}>Price</p></div>
-              </div>
+              <CpGameSel onSelectGame={setGame2} />
+              <CpCards game={game2} />
             </div>
 
           </div>
@@ -74,33 +69,28 @@ function Comparison(){
         </div>
       </section>
 
- <section>
+      <section>
+        <div className='PieSec'>
 
-  <div className='PieSec'>
+          <h2 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '10px 20px', width: 'fit-content' }}>
+            GRAPHICAL INFO
+          </h2>
 
-        {/* Graphical Info Header */}
-        <h2 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '10px 20px', width: 'fit-content' }}>
-          GRAPHICAL INFO
-        </h2>
-
-        {/* Pie Charts */}
-        <div className='mt-3'>
-          <h3 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '8px 20px', width: 'fit-content' }}>
-            PIE CHART
-          </h3>
-          <div className='row mt-3'>
-            <div className='col-6 text-center'>
-              <p style={{ color: 'white' }}>Graph here</p>
-            </div>
-            <div className='col-6 text-center'>
-              <p style={{ color: 'white' }}>Graph here</p>
+          <div className='mt-3'>
+            <h3 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '8px 20px', width: 'fit-content' }}>
+              PIE CHART
+            </h3>
+            <div className='row mt-3'>
+              <div className='col-6 text-center'>
+                <p style={{ color: 'white' }}>Graph here</p>
+              </div>
+              <div className='col-6 text-center'>
+                <p style={{ color: 'white' }}>Graph here</p>
+              </div>
             </div>
           </div>
+
         </div>
-
-  </div>
-
-        {/* Bar Graph and Scatter Plot */}
 
         <div className='row mt-5 OtherSec'>
           <div className='col-6'>
