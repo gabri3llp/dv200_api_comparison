@@ -3,6 +3,9 @@ import { useState } from 'react';
 import CompHero from '../Components/CpHero';
 import CpCards from '../Components/CpCards';
 import CpGameSel from '../Components/CpGameSel';
+import PieChart from '../Components/PieChart';
+import BarChart from '../Components/BarChart';
+import ScatterPlot from '../Components/ScatterPlot';
 
 function Comparison(){
 
@@ -15,10 +18,10 @@ function Comparison(){
 
       <CompHero></CompHero>
 
+
       <section>
         <div className='GameComps'>
 
-          {/* Header */}
           <div className='row mb-4'>
             <div className='col'>
               <h1 style={{ 
@@ -69,6 +72,7 @@ function Comparison(){
         </div>
       </section>
 
+      {/* Graphical Info */}
       <section>
         <div className='PieSec'>
 
@@ -76,34 +80,36 @@ function Comparison(){
             GRAPHICAL INFO
           </h2>
 
+          {/* Pie Charts */}
           <div className='mt-3'>
             <h3 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '8px 20px', width: 'fit-content' }}>
               PIE CHART
             </h3>
             <div className='row mt-3'>
               <div className='col-6 text-center'>
-                <p style={{ color: 'white' }}>Graph here</p>
+                <PieChart game={game1} />
               </div>
               <div className='col-6 text-center'>
-                <p style={{ color: 'white' }}>Graph here</p>
+                <PieChart game={game2} />
               </div>
             </div>
           </div>
 
         </div>
 
+        {/* Bar Graph and Scatter Plot */}
         <div className='row mt-5 OtherSec'>
           <div className='col-6'>
             <h3 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '8px 20px', width: 'fit-content' }}>
               BAR GRAPH
             </h3>
-            <p style={{ color: 'white' }}>Graph here</p>
+            <BarChart game1={game1} game2={game2} />
           </div>
           <div className='col-6'>
             <h3 style={{ backgroundColor: '#F0B53B', color: '#1B2C44', padding: '8px 20px', width: 'fit-content' }}>
               SCATTER PLOT
             </h3>
-            <p style={{ color: 'white' }}>Graph here</p>
+            <ScatterPlot game1={game1} game2={game2} />
           </div>
         </div>
 

@@ -9,6 +9,7 @@ function CpCards({ game }) {
         alt={game.details.name}
         style={{ width: '100%', borderRadius: '8px', marginBottom: '15px' }}
       />
+      <img src={game.details.header_image} alt={game.details.name} style={{ width: '100%', borderRadius: '8px', marginBottom: '15px' }}/>
 
       <table style={{ width: '100%', color: 'white'  }}> 
         <tbody>
