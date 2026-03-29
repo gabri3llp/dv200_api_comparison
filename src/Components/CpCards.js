@@ -10,7 +10,7 @@ function CpCards({ game }) {
         style={{ width: '100%', borderRadius: '8px', marginBottom: '15px' }}
       />
 
-      <table style={{ width: '100%', color: 'white' }}>
+      <table style={{ width: '100%', color: 'white'  }}> 
         <tbody>
           <tr>
             <td><strong>Title:</strong></td>

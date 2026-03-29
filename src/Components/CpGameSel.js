@@ -28,7 +28,7 @@ function CpGameSel({ onSelectGame }) {
     { id: 2379780,  name: "Balatro" },
     { id: 1144200,  name: "Ready or Not" },
     { id: 1086940,  name: "Baldurs Gate 3" },
-    { id: 1817190,  name: "SpiderMan_Miles_Morales" }, 
+    { id: 1817190,  name: "SpiderMan Miles Morales" }, 
     { id: 3108510,  name: "FlyKnight" }, 
   ];
 
