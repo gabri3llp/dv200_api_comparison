@@ -1,12 +1,5 @@
 import { Scatter } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-  Title,
-} from 'chart.js';
+import {Chart as ChartJS,LinearScale,PointElement,Tooltip,Legend,Title,} from 'chart.js';
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend, Title);
 

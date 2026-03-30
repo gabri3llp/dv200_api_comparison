@@ -3,6 +3,19 @@
   
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.hero-section {
+  width: 100%;
+  overflow: hidden;
+}
+
 .nav-link:hover {
   color: #F0B53B !important;
 }
@@ -19,7 +32,7 @@
 
 .HpCardSectionC{
   background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 12%;
+  margin-bottom: 8%;
 }
 
 
@@ -43,6 +56,7 @@ margin-top: 20%;
 
 .DataSection{
   background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 8%;
   
 }
 

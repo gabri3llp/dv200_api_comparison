@@ -63,7 +63,6 @@ function Timeline() {
     { value: 'total_negative', label: 'Total Negative Reviews' },
     { value: 'total_reviews',  label: 'Total Reviews' },
     { value: 'review_score',   label: 'Review Score' },
-    { value: 'num_reviews',    label: 'Number of Reviews' },
   ];
 
   const chartData = {

@@ -7,6 +7,7 @@ function HomeHero() {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
+      marginBottom: "5%"
     }}>
       <h1>Steam Stats Explorer</h1>
       <p>Overview of games and player statistics from the Steam API — compare playtime, genres, and ratings.</p>

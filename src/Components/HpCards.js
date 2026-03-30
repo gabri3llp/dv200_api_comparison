@@ -2,10 +2,12 @@ import '../App.css';
 import Card from 'react-bootstrap/Card';
 
 function MyCards({ game }) {
+  
 
   if (!game) return <p style={{ color: 'white' }}>Loading...</p>;
 
   return (
+    
     <section className='HpCards'>
       <Card style={{ width: '18rem', backgroundColor: '#1B2C44', color: 'white' }}>
         <Card.Img 

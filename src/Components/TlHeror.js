@@ -1,11 +1,15 @@
 import '../App.css';
-import Image from 'react-bootstrap/Image';
+
 
 function TimeHero() {
   return (
-    <div className="hero-section">
-      <Image src="holder.js/100px250" alt='COOL ASS IMAGE' fluid />
-      <h1> The timeline page will show us 5 different games in various different states, like release or total reviews </h1>
+    <div className="hero-section" style={{ 
+      backgroundImage: "url('/Abo.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}>
+      <h1 style={{alignItems: 'center',}}> The timeline page will show us 7 diffrent games in varisous diffrent data sets at their release dates </h1>
     </div>
   );
 }
