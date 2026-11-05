@@ -1,49 +1,87 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import MyCards from '../Components/HpCards';
 import HomeHero from '../Components/HpHero';
 import Mydata from '../Components/HpData';
 
 const TOP_GAMES = [
   { id: 1245620, name: "Elden Ring" },
-  { id: 1086940, name: "Baldurs Gate 3" },
+  { id: 1086940, name: "Baldur's Gate 3" },
   { id: 2379780, name: "Balatro" },
-  { id: 632360,  name: "Risk of Rain 2" },
+  { id: 632360, name: "Risk of Rain 2" },
 ];
 
 function Home() {
-
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchAllGames = async () => {
-      try {
-        const PROXY = "https://proxy.corsfix.com/?";
+      const PROXY = 'https://proxy.corsfix.com/?';
 
+      try {
         const results = await Promise.all(
           TOP_GAMES.map(async (game) => {
+            // Fetch Steam game details
             const detailsResponse = await axios.get(
               `${PROXY}https://store.steampowered.com/api/appdetails?appids=${game.id}&cc=us`
             );
-            const reviewsResponse = await axios.get(
-              `${PROXY}https://store.steampowered.com/appreviews/${game.id}?json=1`
-            );
+
+            const details = detailsResponse.data?.[game.id]?.data;
+
+            if (!details) {
+              throw new Error(`Could not retrieve details for ${game.name}`);
+            }
+
+            // Prepare the newer Steam reviews API request
+            const input = {
+              appid: Number(game.id),
+              filter: 0,
+              review_type: 0,
+              purchase_type: 1,
+              languages: ['all'],
+              num_per_page: 20,
+            };
+
+            const steamUrl =
+              `https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/?input_json=${encodeURIComponent(
+                JSON.stringify(input)
+              )}`;
+
+            let reviews = null;
+
+            // Reviews are optional: game details can still load without them
+            try {
+              const reviewsResponse = await axios.get(
+                `${PROXY}${steamUrl}`
+              );
+
+              reviews =
+                reviewsResponse.data?.response?.query_summary ?? null;
+            } catch (reviewError) {
+              console.error(
+                `Could not fetch reviews for ${game.name}:`,
+                reviewError
+              );
+            }
 
             return {
-              details: detailsResponse.data[game.id].data,
-              reviews: reviewsResponse.data.query_summary
+              details,
+              reviews,
             };
           })
         );
 
         console.log('Home games:', results);
         setGames(results);
-        setLoading(false);
-
-      } catch (error) {
-        console.error('Error fetching games:', error);
+      } catch (fetchError) {
+        console.error('Error fetching games:', fetchError);
+        setError('Unable to load the featured games. Please try again later.');
+      } finally {
         setLoading(false);
       }
     };
@@ -52,44 +90,53 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="home-page">
 
-      <HomeHero></HomeHero>
+      <HomeHero />
 
-      <div className='HpCardSectionC'>
+      <div className="HpCardSectionC">
 
-        <div className='row'>
-          <div className='col'>
-            <h1 style={{ 
-              color: '#1B2C44', 
-              backgroundColor: '#F0B53B', 
-              width: "fit-content", 
-              borderRadius: "20px",
-              padding: "8px 75px"
-            }}>
+        <div className="row">
+          <div className="col">
+            <h1
+              style={{
+                color: '#1B2C44',
+                backgroundColor: '#F0B53B',
+                width: 'fit-content',
+                borderRadius: '20px',
+                padding: '8px 75px',
+              }}
+            >
               Top of their Games
             </h1>
           </div>
         </div>
 
-        <div className='row HpCardSectionP'>
-          <div className='col'>
-            <MyCards game={games[0]} />
+        {loading && (
+          <p style={{ color: 'white', textAlign: 'center' }}>
+            Loading featured games...
+          </p>
+        )}
+
+        {error && (
+          <p style={{ color: 'white', textAlign: 'center' }}>
+            {error}
+          </p>
+        )}
+
+        {!loading && !error && (
+          <div className="row HpCardSectionP">
+            {games.map((game, index) => (
+              <div className="col" key={TOP_GAMES[index].id}>
+                <MyCards game={game} />
+              </div>
+            ))}
           </div>
-          <div className='col'>
-            <MyCards game={games[1]} />
-          </div>
-          <div className='col'>
-            <MyCards game={games[2]} />
-          </div>
-          <div className='col'>
-            <MyCards game={games[3]} />
-          </div>
-        </div>
+        )}
 
       </div>
 
-      <section className='DataSection'>
+      <section className="DataSection">
         <Mydata game={games[0]} />
       </section>
 

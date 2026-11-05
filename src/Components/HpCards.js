@@ -1,32 +1,41 @@
-import '../App.css';
-import Card from 'react-bootstrap/Card';
 
 function MyCards({ game }) {
-  
+  // Support both the Steam API response and extracted game data.
+  const details = game?.details ?? game?.data ?? game;
+  const reviews = game?.reviews?.query_summary ?? game?.reviews ?? {};
 
-  if (!game) return <p style={{ color: 'white' }}>Loading...</p>;
+  const title = details?.name ?? "Unknown game";
+
+  const metacriticScore = details?.metacritic?.score ?? "N/A";
+
+  const price =
+    details?.price_overview?.final_formatted ??
+    (details?.is_free ? "Free" : "Price unavailable");
+
+  const reviewDescription =
+    reviews?.review_score_desc ?? "Review information unavailable";
+
+  const positiveReviews = reviews?.total_positive ?? 0;
+  const negativeReviews = reviews?.total_negative ?? 0;
+  const totalReviews = reviews?.total_reviews ?? 0;
 
   return (
-    
-    <section className='HpCards'>
-      <Card style={{ width: '18rem', backgroundColor: '#1B2C44', color: 'white' }}>
-        <Card.Img 
-          variant="top" 
-          src={game.details.header_image} 
-          alt={game.details.name}
-        />
-        <Card.Body>
-          <Card.Title>{game.details.name}</Card.Title>
-          <Card.Subtitle className="mb-2" style={{ color: 'white' }}>
-          {game.details.release_date.date}
-          </Card.Subtitle>
-          <Card.Text>
-            Price: {game.details.price_overview?.final_formatted || 'Free'}<br/>
-            Review: {game.reviews.review_score_desc}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </section>
+    <div className="game-card">
+      <h2>{title}</h2>
+
+      <img
+        src={details?.header_image ?? ""}
+        alt={title}
+      />
+
+      <p>Metacritic Score: {metacriticScore}</p>
+      <p>Price: {price}</p>
+
+      <p>Steam Review Rating: {reviewDescription}</p>
+      <p>Positive Reviews: {positiveReviews}</p>
+      <p>Negative Reviews: {negativeReviews}</p>
+      <p>Total Reviews: {totalReviews}</p>
+    </div>
   );
 }
 

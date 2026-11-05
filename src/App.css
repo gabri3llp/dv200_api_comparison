@@ -1,77 +1,249 @@
-.MyNavBar {
-  background-color: #2A475E !important ;
-  
-}
+
+/* ========================================
+   GLOBAL STYLING
+======================================== */
 
 * {
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(91, 65, 180, 0.22), transparent 40%),
+    radial-gradient(ellipse at 85% 45%, rgba(30, 110, 190, 0.18), transparent 40%),
+    linear-gradient(135deg, #080d1a, #11152b 55%, #080d1a);
+  color: white;
+  min-height: 100vh;
 }
 
-.hero-section {
-  width: 100%;
-  overflow: hidden;
+/* ========================================
+   NAVBAR
+======================================== */
+
+.MyNavBar {
+  background: rgba(20, 35, 58, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: large;
+  margin-right: 175px;
+  transition: color 0.25s ease;
 }
 
 .nav-link:hover {
   color: #F0B53B !important;
 }
 
-.hero-section{
-  color: aliceblue;
-  height: 100vh;
+/* ========================================
+   HERO SECTIONS
+======================================== */
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 60px 24px;
+  overflow: hidden;
   color: white;
 }
 
-.HpCardSectionC{
-  background-color: rgba(0, 0, 0, 0.25);
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba(5, 10, 25, 0.75),
+    rgba(24, 15, 55, 0.48),
+    rgba(5, 10, 25, 0.75)
+  );
+}
+
+.hero-glass {
+  position: relative;
+  z-index: 1;
+  width: min(850px, 90%);
+  padding: 45px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 35px rgba(100, 70, 255, 0.2);
+}
+
+.hero-glass h1 {
+  color: white;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-glass p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* ========================================
+   GLASS PANEL STYLE
+======================================== */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(90, 70, 220, 0.10);
+}
+
+/* ========================================
+   HOME PAGE
+======================================== */
+
+.HpCardSectionC {
+  padding: 65px 5%;
   margin-bottom: 8%;
+  background: transparent;
 }
 
-
-.HpCardSectionP{
-  padding-top: 5%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 8%;
+.HpCardSectionC h1 {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-
-.nav-link {
-  margin-right: 50% !important;
-  font-weight: 500;
-  font-size: large;
+.HpCardSectionP {
+  padding: 5% 0 8%;
+  row-gap: 30px;
 }
 
-.DataSplit{
-margin-top: 20%;
-}
-
-.DataSection{
-  background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 8%;
-  
-}
-
-.DataSection h4 {
-   color: #66C0F4;
-   margin-top: 20px;
-}
-
-.HpCards{
+.HpCards {
   padding-bottom: 5%;
 }
 
+/* Individual game cards */
+.game-card {
+  height: 100%;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-7px);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(80, 120, 255, 0.2);
+}
+
+.game-card h2 {
+  color: white;
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+}
+
+.game-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.game-card p {
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 9px;
+}
+
+/* ========================================
+   HOME DATA SECTION
+======================================== */
+
+.DataSection {
+  margin: 0 5% 8%;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.DataSection h1 {
+  color: white !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 15px;
+}
+
+.DataSection h3 {
+  color: #66C0F4 !important;
+}
+
+.DataSection h4 {
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 20px;
+}
+
+.DataSection img {
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   COMPARISON PAGE
+======================================== */
+
+.GameComps,
+.PieSec,
+.OtherSec {
+  margin: 0 4% 8%;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================
+   OTHER ELEMENTS
+======================================== */
+
+.DataSplit {
+  margin-top: 10%;
+}
+
 .footer {
-  background-color: #1B2C44;
-  padding: 10px 20px;
+  background: rgba(20, 35, 58, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 20px;
   margin-top: 50px;
 }
 
@@ -84,20 +256,35 @@ margin-top: 20%;
   color: #F0B53B;
 }
 
-.GameComps {
-  background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 12%;
-  padding: 40px;
-}
+/* ========================================
+   RESPONSIVE STYLING
+======================================== */
 
-.PieSec{
-  background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 12%;
-  padding: 40px;
-}
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 55vh;
+    padding: 35px 15px;
+  }
 
-.OtherSec{
-  background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 12%;
-  padding: 40px;
+  .hero-glass {
+    padding: 28px 20px;
+    width: 95%;
+  }
+
+  .HpCardSectionC {
+    padding: 40px 4%;
+  }
+
+  .DataSection {
+    margin: 0 4% 8%;
+    padding: 22px;
+  }
+
+  .GameComps,
+  .PieSec,
+  .OtherSec {
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 20px;
+  }
 }
